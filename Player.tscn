@@ -1,0 +1,371 @@
+[gd_scene load_steps=53 format=2]
+
+[ext_resource path="res://sprites/Hero.png" type="Texture" id=1]
+[ext_resource path="res://sprites/square.jpg" type="Texture" id=2]
+[ext_resource path="res://Scripts/Player.py" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 37.9969
+
+[sub_resource type="Animation" id=2]
+resource_name = "Bat_attack"
+length = 0.35
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 6, 7, 8, 9, 10, 11, 12 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Bat_idle"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Bat_walk"
+length = 0.55
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Dead"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 20 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Hand_attack"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 27, 28, 29, 30, 31, 32 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Hand_idle"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 23 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Hand_walk"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 21, 22, 23, 24, 25, 26 ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 16, 17, 18, 19 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "Rifle_idle"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 13 ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.6
+loop = true
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 13, 14, 15, 16 ]
+}
+
+[sub_resource type="CircleShape2D" id=12]
+radius = 86.373
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "Bat_attack"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "Bat_idle"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "Bat_walk"
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "Dead"
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "Hand_attack"
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "Hand_idle"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "Hand_walk"
+
+[sub_resource type="AnimationNodeAnimation" id=20]
+animation = "Rifle_attack"
+
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "Rifle_idle"
+
+[sub_resource type="AnimationNodeAnimation" id=22]
+animation = "Rifle_walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=35]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=36]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=37]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=38]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=39]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=40]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=41]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=42]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=43]
+
+[sub_resource type="AnimationNodeStateMachine" id=44]
+states/Bat_attack/node = SubResource( 13 )
+states/Bat_attack/position = Vector2( 176, 79 )
+states/Bat_idle/node = SubResource( 14 )
+states/Bat_idle/position = Vector2( 320, 168 )
+states/Bat_walk/node = SubResource( 15 )
+states/Bat_walk/position = Vector2( 458, 59 )
+states/Dead/node = SubResource( 16 )
+states/Dead/position = Vector2( 567, 246.128 )
+states/Hand_attack/node = SubResource( 17 )
+states/Hand_attack/position = Vector2( 1050, 234 )
+states/Hand_idle/node = SubResource( 18 )
+states/Hand_idle/position = Vector2( 787, 161 )
+states/Hand_walk/node = SubResource( 19 )
+states/Hand_walk/position = Vector2( 846, -15 )
+states/Rifle_attack/node = SubResource( 20 )
+states/Rifle_attack/position = Vector2( 882, 473 )
+states/Rifle_idle/node = SubResource( 21 )
+states/Rifle_idle/position = Vector2( 584, 369 )
+states/Rifle_walk/node = SubResource( 22 )
+states/Rifle_walk/position = Vector2( 261, 466 )
+transitions = [ "Bat_attack", "Bat_idle", SubResource( 23 ), "Bat_idle", "Bat_attack", SubResource( 24 ), "Bat_idle", "Bat_walk", SubResource( 25 ), "Bat_walk", "Bat_idle", SubResource( 26 ), "Bat_idle", "Hand_idle", SubResource( 27 ), "Hand_idle", "Bat_idle", SubResource( 28 ), "Hand_idle", "Hand_walk", SubResource( 29 ), "Hand_walk", "Hand_idle", SubResource( 30 ), "Hand_idle", "Hand_attack", SubResource( 31 ), "Hand_attack", "Hand_idle", SubResource( 32 ), "Bat_idle", "Rifle_idle", SubResource( 33 ), "Rifle_idle", "Bat_idle", SubResource( 34 ), "Rifle_idle", "Hand_idle", SubResource( 35 ), "Hand_idle", "Rifle_idle", SubResource( 36 ), "Rifle_walk", "Rifle_idle", SubResource( 37 ), "Rifle_idle", "Rifle_walk", SubResource( 38 ), "Rifle_idle", "Rifle_attack", SubResource( 39 ), "Rifle_attack", "Rifle_idle", SubResource( 40 ), "Bat_idle", "Dead", SubResource( 41 ), "Hand_idle", "Dead", SubResource( 42 ), "Rifle_idle", "Dead", SubResource( 43 ) ]
+start_node = "Hand_idle"
+end_node = "Dead"
+graph_offset = Vector2( -29, 296.128 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=45]
+
+[sub_resource type="Gradient" id=46]
+offsets = PoolRealArray( 0, 0.0194175, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.858824, 1, 0, 1, 0.882353, 1, 0, 0 )
+
+[sub_resource type="GradientTexture" id=47]
+gradient = SubResource( 46 )
+
+[sub_resource type="ParticlesMaterial" id=48]
+lifetime_randomness = 0.52
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 20.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 100000.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color_ramp = SubResource( 47 )
+
+[sub_resource type="CircleShape2D" id=49]
+radius = 41.9955
+
+[node name="Player" type="KinematicBody2D"]
+z_index = 1
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 3, 3 )
+texture = ExtResource( 1 )
+hframes = 33
+frame = 23
+region_rect = Rect2( 60, 63, 138, 30 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Bat_attack = SubResource( 2 )
+anims/Bat_idle = SubResource( 3 )
+anims/Bat_walk = SubResource( 4 )
+anims/Dead = SubResource( 5 )
+anims/Hand_attack = SubResource( 6 )
+anims/Hand_idle = SubResource( 7 )
+anims/Hand_walk = SubResource( 8 )
+anims/Rifle_attack = SubResource( 9 )
+anims/Rifle_idle = SubResource( 10 )
+anims/Rifle_walk = SubResource( 11 )
+
+[node name="pickup_shape" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickup_shape"]
+shape = SubResource( 12 )
+
+[node name="Bullet point" type="Node2D" parent="."]
+position = Vector2( 60, 0 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 44 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 45 )
+
+[node name="particles" type="Particles2D" parent="."]
+modulate = Color( 1, 1, 0, 1 )
+position = Vector2( -5.17726, 14.7159 )
+scale = Vector2( 0.01, 0.005 )
+emitting = false
+amount = 4
+lifetime = 0.2
+one_shot = true
+speed_scale = 0.7
+process_material = SubResource( 48 )
+texture = ExtResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -2.11896, -2.11893 )
+current = true
+smoothing_enabled = true
+
+[node name="MeleeRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeRange"]
+position = Vector2( 23.5717, 0.561234 )
+shape = SubResource( 49 )
